@@ -48,23 +48,14 @@ Forms:
           type: flavor
           label: Instance flavor
           description: >-
-            Select registered in Openstack flavor. Consider that application performance
-            depends on this parameter.
+            Select a flavor.
           required: false
         - name: osImage
           type: image
           imageType: linux
           label: Instance image
           description: >-
-            Select a valid image for the application. Image should already be prepared and
-            registered in glance.
-        - name: assignFloatingIP
-          type: boolean
-          label: Assign Floating IP
-          description: >-
-             Select to true to assign floating IP automatically
-          initial: false
-          required: false
+            Select an image.
         - name: keyPair
           type: keypair
           label: Key Pair
@@ -84,6 +75,13 @@ Forms:
           required: true
           murano_networks: translate
           allow_auto: false
+        - name: assignFloatingIP
+          type: boolean
+          label: Assign Floating IP
+          description: >-
+             Select to assign floating IP automatically
+          initial: false
+          required: false
         - name: unitNamingPattern
           type: string
           label: Instance Naming Pattern
