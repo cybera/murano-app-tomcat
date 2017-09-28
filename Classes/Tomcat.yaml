@@ -72,12 +72,12 @@ Methods:
 
           - If: $.instance.assignFloatingIp
             Then:
-              - $address: $.instance.floatingIpAddress
+              - $address: format('http://{0}', $.instance.floatingIpAddress)
             Else:
               - $address: $.instance.ipAddresses.selectMany(
                   switch(
                     $.matches("[a-f]+") => format('[{0}]', $),
                     true => $
                   )).select(format('http://{0}:8080/', $)).join(', ')
-              - $._environment.reporter.report($this, 'Tomcat is available at {0}'.format($address))
-              - $.setAttr(deployed, true)
+          - $._environment.reporter.report($this, 'Tomcat is available at {0}'.format($address))
+          - $.setAttr(deployed, true)
